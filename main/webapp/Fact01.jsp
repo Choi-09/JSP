@@ -24,7 +24,7 @@ if(snum != null && snum.equals("") == false) {
 /* for (int i = num; i >=1; i--) {
 fact = fact*i; 
 } */
-%>
+%> 
 
 
 <!DOCTYPE html>

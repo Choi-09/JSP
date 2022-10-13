@@ -3,13 +3,7 @@
     
     
 <%
-int tprice = "";
-String[] bill = {4,2};
 
-int tprice = request.getParameter("price");
-if(tprice/bill > 0) { 
-	for(int i = 1; i < bill.length; i++);
-}
 
 %>
 <!DOCTYPE html>
