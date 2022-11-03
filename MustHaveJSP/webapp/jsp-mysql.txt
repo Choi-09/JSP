@@ -1,0 +1,2 @@
+jsp-mysql 연결되지 않을 때
+: web-inf > lib > mysql-connector-j-8.0.31 파일 꼭 넣어준다!
