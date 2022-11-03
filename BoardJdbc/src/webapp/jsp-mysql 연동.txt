@@ -1,2 +1,0 @@
-WEB-INF 폴더 > lib > mysql-connector-j-8.0.31 
-설치해놓기!
