@@ -13,14 +13,15 @@
 ```
 2. java가 데이터베이스에 접근하는 방법
 ```
-  1) Connection: DB와 연결하기 위해 사용하는 객체. parameter: data의 위치(URL), data 
-  2-1) Statement: SQL실행시키는 객체. Connection 객체로부터 Instance화하여 만들어 내며 DB에 SQL을 보내기 위한 준비작업과 실제 SQL을 실행하여 결과값을 주는 API를 제공.
-  2-2) PreparedStatement: SQL실행시키는 객체. 
-  3) ResultSet : 결과데이터 가져옴
-
-```
-  -- Statement VS PreparedStatement
+    1) Connection: DB와 연결하기 위해 사용하는 객체. parameter: data의 위치(URL), data 
+    2-1) Statement: SQL실행시키는 객체. Connection 객체로부터 Instance화하여 만들어 내며 DB에 SQL을 보내기 위한 준비작업과 실제 SQL을 실행하여 결과값을 주는 API를 제공.
+    2-2) PreparedStatement: SQL실행시키는 객체. 
+    3) ResultSet : 결과데이터 가져옴
+  
+   + **Statement VS PreparedStatement**
+    *비교
     
+
 3. 용어 설명
 ```
    1) DAO(Data Access Object): 데이터 베이스에 접속해서 데이터를 추가, 삭제, 수정 등의 작업을 하는 클래스.
