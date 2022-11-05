@@ -9,7 +9,7 @@
     5) mysql 설치폴더 (C:\Program Files (x86)\MySQL\Connector J 8.0) 
     6) ApplyClose
     
-    - Db,Java연결 시 참고사이트: https://heather-hm.tistory.com/3
+    - [Db,Java연결 시 참고사이트] https://heather-hm.tistory.com/3
 ```
 2. java가 데이터베이스에 접근하는 방법
 ```
