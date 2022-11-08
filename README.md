@@ -30,6 +30,6 @@
                                  테이블 정보를 가지고 테이블의 컬럼들을 변수로 선언, 초기화 후 getter를 이용하여 값을 가져올 수 있어야한다.
 ```   
 
-![image](https://user-images.githubusercontent.com/51871037/200109663-e83a42e5-d91d-4811-b925-28c7842ba07c.png)
-    *데이터 베이스와 통신하기 위한 기능을 모듈화하는 방법
+![image](https://user-images.githubusercontent.com/51871037/200109663-e83a42e5-d91d-4811-b925-28c7842ba07c.png) <br/>
+*>데이터 베이스와 통신하기 위한 기능을 모듈화하는 방법*
  
