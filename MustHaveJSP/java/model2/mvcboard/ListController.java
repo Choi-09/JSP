@@ -44,9 +44,9 @@ public class ListController extends HttpServlet {
         if (pageTemp != null && !pageTemp.equals(""))
             pageNum = Integer.parseInt(pageTemp); // 요청받은 페이지로 수정
 
-        // 목록에 출력할 게시물 범위 계산
-        int start = (pageNum - 1) * pageSize + 1;  // 첫 게시물 번호
-        int end = pageSize; // 마지막 게시물 번호
+        // 목록에 출력할 게시물 범위 계산(검색 후 2페이지로 넘어가면 경로가 이상해지는 오류 수정)
+        int start = (pageNum - 1) * pageSize;  // 첫 게시물 번호 - mysql, h2
+        int end = pageSize; // 마지막 게시물 번호 - mysql, h2
         map.put("start", start);
         map.put("end", end);
         /* 페이지 처리 end */
