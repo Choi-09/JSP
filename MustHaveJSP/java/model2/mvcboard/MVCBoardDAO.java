@@ -14,7 +14,7 @@ public class MVCBoardDAO extends JDBConnectH2 {
     // 검색 조건에 맞는 게시물의 개수를 반환합니다.
     public int selectCount(Map<String, Object> map) {
         int totalCount = 0;
-        String query = "SELECT COUNT(*) FROM mvcboard";
+        String query = "SELECT COUNT(*) FROM mvcboard";	//쿼리문
         if (map.get("searchWord") != null) {
             query += " WHERE " + map.get("searchField") + " "
                    + " LIKE '%" + map.get("searchWord") + "%'";
@@ -26,42 +26,42 @@ public class MVCBoardDAO extends JDBConnectH2 {
             totalCount = rs.getInt(1);
         }
         catch (Exception e) {
-            System.out.println("게시물 카운트 중 예외 발생");	//에러메세지가 출력되면 DAO중 해당 파트에서 찾아서 오류 수정한다
+            System.out.println("게시물 카운트 중 예외 발생");	//예외발생 에러메세지가 출력되면 DAO중 해당 파트에서 찾아서 오류 수정해야한다.
             e.printStackTrace();
         }
 
         return totalCount;
     }
 
-    // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
-    public List<MVCBoardDTO> selectListPage(Map<String,Object> map) {
+    // 검색 조건에 맞는 게시물 목록을 반환(페이징 기능 지원).
+    public List<MVCBoardDTO> selectListPage(Map<String,Object> map) {	//문자열 key와 객체 value를 갖는 "ListPage" 맵을 리스트로 생성
         List<MVCBoardDTO> board = new Vector<MVCBoardDTO>();
         String query = " "
-                     + "SELECT * FROM ( "
-                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
-                     + "        SELECT * FROM mvcboard ";
+                     + "SELECT * FROM ( "			// ③ 작은숫자로 나열된 테이블의 모든 데이터 보기
+                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "	// ② 로부터 선택된 테이블의 데이터를 작은숫자로 나열
+                     + "        SELECT * FROM mvcboard ";	// ① mvcboard에서의 모든데이터
 
-        if (map.get("searchWord") != null)
+        if (map.get("searchWord") != null)		//searchWord가 null이 아니면
         {
-            query += " WHERE " + map.get("searchField")
+            query += " WHERE " + map.get("searchField")		// searchField에서 searchWord가 포함된 글을 찾아서 
                    + " LIKE '%" + map.get("searchWord") + "%' ";
         }
 
-        query += "        ORDER BY idx DESC "
+        query += "        ORDER BY idx DESC "		//인덱스를 기준으로 내림차순 정렬
                + "    ) Tb "
                + " ) "
                + " WHERE rNum BETWEEN ? AND ?";
 
         try {
-            psmt = con.prepareStatement(query);
-            psmt.setString(1, map.get("start").toString());
-            psmt.setString(2, map.get("end").toString());
+            psmt = con.prepareStatement(query);			
+            psmt.setString(1, map.get("start").toString());	//쿼리문의 rnum betweend의 시작을 "start" 문자열로 받음
+            psmt.setString(2, map.get("end").toString());	//두번째 컬럼을 "end" 문자열로 받음 => start에서 end 까지.
             rs = psmt.executeQuery();
 
-            while (rs.next()) {
-                MVCBoardDTO dto = new MVCBoardDTO();
+            while (rs.next()) {		
+                MVCBoardDTO dto = new MVCBoardDTO();	//dto 객체 생성
 
-                dto.setIdx(rs.getString(1));
+                dto.setIdx(rs.getString(1));		
                 dto.setName(rs.getString(2));
                 dto.setTitle(rs.getString(3));
                 dto.setContent(rs.getString(4));
@@ -83,7 +83,7 @@ public class MVCBoardDAO extends JDBConnectH2 {
     }
 
     // 게시글 데이터를 받아 DB에 추가합니다(파일 업로드 지원).
-    public int insertWrite(MVCBoardDTO dto) {
+    public int insertWrite(MVCBoardDTO dto) {		//파일업로드가 가능한 게시글 쓰기 기능 
         int result = 0;
         try {
             String query = "INSERT INTO mvcboard ( "
@@ -159,7 +159,7 @@ public class MVCBoardDAO extends JDBConnectH2 {
         try {
             psmt = con.prepareStatement(sql);
             psmt.setString(1, idx);
-            psmt.executeUpdate();
+            psmt.executeUpdate();	// downCount는 다운로드 할 때마다 그 수가 증가해야 하므로 update.
         }
         catch (Exception e) {}
     }
@@ -171,7 +171,7 @@ public class MVCBoardDAO extends JDBConnectH2 {
             psmt = con.prepareStatement(sql);
             psmt.setString(1, pass);
             psmt.setString(2, idx);
-            rs = psmt.executeQuery();
+            rs = psmt.executeQuery();	// select: execute query
             rs.next();
             if (rs.getInt(1) == 0) {
                 isCorr = false;
@@ -191,7 +191,7 @@ public class MVCBoardDAO extends JDBConnectH2 {
             String query = "DELETE FROM mvcboard WHERE idx=?";
             psmt = con.prepareStatement(query);
             psmt.setString(1, idx);
-            result = psmt.executeUpdate();
+            result = psmt.executeUpdate();	//delete: 쿼리 update
         }
         catch (Exception e) {
             System.out.println("게시물 삭제 중 예외 발생");
