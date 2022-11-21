@@ -1,7 +1,7 @@
 package model2.mvcboard;
 
 public class MVCBoardDTO {
-
+		// 1. 변수선언
 		private String idx;
 		private String name;
 		private String title;
@@ -12,6 +12,8 @@ public class MVCBoardDTO {
 		private int downcount;
 		private String pass;
 		private int visitcount;
+		
+		// 2. 게터, 
 		public String getIdx() {
 			return idx;
 		}
@@ -72,6 +74,8 @@ public class MVCBoardDTO {
 		public void setVisitcount(int visitcount) {
 			this.visitcount = visitcount;
 		}
+	
+		//3. String toString
 		@Override
 		public String toString() {
 			return "MVCBoardDTO [idx=" + idx + ", name=" + name + ", title=" + title + ", content=" + content
