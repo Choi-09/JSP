@@ -18,17 +18,17 @@ import com.oreilly.servlet.MultipartRequest;
 import fileupload.FileUtil;
 import utils.JSFunction;
 
-@WebServlet("/mvcboard/edit.do")
+@WebServlet("/mvcboard/edit.do") //웹서블릿 어노테이션과 경로를 입력하여 클라이언트(브라우저)에서 해당 경로를 입력하면 톰캣서버를 알아서 찾아서 실행시킴. web.xml과 중복되지 않도록 주의
 public class EditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws ServletException, IOException {  // 예외는 날리기
         String idx = req.getParameter("idx");
         MVCBoardDAO dao = new MVCBoardDAO();
         MVCBoardDTO dto = dao.selectView(idx);
         req.setAttribute("dto", dto);
-        req.getRequestDispatcher("/14MVCBoard/Edit.jsp").forward(req, resp);
-    }
+        req.getRequestDispatcher("/14MVCBoard/Edit.jsp").forward(req, resp); //requestDispatcher: 현재 request에 담고 있는 정보를 저장하고 있다가 그 다음페이지, 다음페이지에서도 해당 정보를 볼 수 있게 저장하는 기능을한다.
+    }   //requestDispatcher를 forward 방식으로 넘겨준다.
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
