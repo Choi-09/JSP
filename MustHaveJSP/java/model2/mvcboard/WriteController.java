@@ -54,7 +54,7 @@ public class WriteController extends HttpServlet {
         // 원본 파일명과 저장된 파일 이름 설정
         String fileName = mr.getFilesystemName("ofile");
         if (fileName != null) {
-            // 첨부 파일이 있을 경우 파일명 변경
+            // 첨부 파일이 있을 경우 파일명 변경.
             // 새로운 파일명 생성
             String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
             String ext = fileName.substring(fileName.lastIndexOf("."));
