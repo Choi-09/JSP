@@ -34,7 +34,7 @@ public class PassController extends HttpServlet {
         boolean confirmed = dao.confirmPassword(pass, idx);
         dao.close();
 
-        if (confirmed) {  // 비밀번호 일치
+        if (confirmed) {  // 비밀번호 일치.
             if (mode.equals("edit")) {  // 수정 모드
                 HttpSession session = req.getSession();
                 session.setAttribute("pass", pass);
