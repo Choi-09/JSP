@@ -12,7 +12,7 @@ import fileupload.FileUtil;
 @WebServlet("/mvcboard/download.do")
 public class DownloadController extends HttpServlet{
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)  //protected: 같은 패키지에서는 접근제한 없지만 다른 패키지에서는 자식클래스만 접근 허용
         throws ServletException, IOException {
         // 매개변수 받기
         String ofile = req.getParameter("ofile");  // 원본 파일명
